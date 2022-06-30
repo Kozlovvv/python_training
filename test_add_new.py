@@ -34,7 +34,7 @@ class TestAddNew(unittest.TestCase):
         wd.find_element_by_link_text("Logout").click()
 
     def create_contact(self, wd, contact):
-        # init contact creation
+        # init contact creationn
         wd.find_element_by_xpath("//input[@value='Login']").click()
         # fill contacts form
         wd.find_element_by_name("firstname").clear()
