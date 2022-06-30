@@ -19,14 +19,12 @@ class TestAddNew(unittest.TestCase):
         self.wd.implicitly_wait(30)
     def test_add_new(self):
         wd = self.wd
-        self.open_home_page(wd)
         self.login(wd, username="admin", password="secret")
         self.create_contact(wd, Contact(firstname="Vladimir", midlename="Vladimirovich", lastname="Kozlov", mobile="1234567890"))
         self.logout(wd)
 
     def test_add_emty_new(self):
             wd = self.wd
-            self.open_home_page(wd)
             self.login(wd, username="admin", password="secret")
             self.create_contact(wd, Contact(firstname="", midlename="", lastname="",
                                 mobile=""))
@@ -51,6 +49,7 @@ class TestAddNew(unittest.TestCase):
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
 
     def login(self, wd, username, password):
+        self.open_home_page(wd)
         wd.find_element_by_name("user").clear()
         wd.find_element_by_name("user").send_keys(username)
         wd.find_element_by_name("pass").clear()

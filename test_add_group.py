@@ -46,7 +46,7 @@ class TestAddGroup(unittest.TestCase):
         wd.find_element_by_name("group_footer").send_keys(group.footer)
         # submit group creation
         wd.find_element_by_name("submit").click()
-        # return group page
+        # return gruop page
         self.return_to_groups_page(wd)
 
     def open_groups_page(self, wd):
