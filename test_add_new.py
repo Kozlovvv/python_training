@@ -18,22 +18,22 @@ class TestAddNew(unittest.TestCase):
         self.wd = webdriver.Chrome()
         self.wd.implicitly_wait(30)
     def test_add_new(self):
-        wd = self.wd
-        self.login(wd, username="admin", password="secret")
-        self.create_contact(wd, Contact(firstname="Vladimir", midlename="Vladimirovich", lastname="Kozlov", mobile="1234567890"))
-        self.logout(wd)
+        self.login(username="admin", password="secret")
+        self.create_contact(Contact(firstname="Vladimir", midlename="Vladimirovich", lastname="Kozlov", mobile="1234567890"))
+        self.logout()
 
     def test_add_emty_new(self):
-            wd = self.wd
-            self.login(wd, username="admin", password="secret")
-            self.create_contact(wd, Contact(firstname="", midlename="", lastname="",
+        self.login(username="admin", password="secret")
+        self.create_contact(Contact(firstname="", midlename="", lastname="",
                                 mobile=""))
-            self.logout(wd)
+        self.logout()
 
-    def logout(self, wd):
+    def logout(self):
+        wd = self.wd
         wd.find_element_by_link_text("Logout").click()
 
-    def create_contact(self, wd, contact):
+    def create_contact(self, contact):
+        wd = self.wd
         # init contact creation
         wd.find_element_by_xpath("//input[@value='Login']").click()
         # fill contacts form
@@ -48,15 +48,17 @@ class TestAddNew(unittest.TestCase):
         # submit contact creation
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
 
-    def login(self, wd, username, password):
-        self.open_home_page(wd)
+    def login(self, username, password):
+        wd = self.wd
+        self.open_home_page()
         wd.find_element_by_name("user").clear()
         wd.find_element_by_name("user").send_keys(username)
         wd.find_element_by_name("pass").clear()
         wd.find_element_by_name("pass").send_keys(password)
         wd.find_element_by_id("LoginForm").click()
 
-    def open_home_page(self, wd):
+    def open_home_page(self):
+        wd = self.wd
         wd.get("http://localhost/addressbook/edit.php")
 
     def is_element_present(self, how, what):
