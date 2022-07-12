@@ -1,4 +1,4 @@
-from python_training.fixture.application_contact import Application
+from python_training.fixture.application import Application
 from python_training.model.contact import Contact
 import pytest
 
@@ -11,13 +11,13 @@ def app(request):
 
 
 def test_add_contact(app):
-    app.login(username="admin", password="secret")
+    app.login_c(username="admin", password="secret")
     app.create_contact(Contact(firstname="Vladimir", midlename="Vladimirovich", lastname="Kozlov", mobile="1234567890"))
     app.logout()
 
 
 def test_add_emty_contact(app):
-    app.login(username="admin", password="secret")
+    app.login_c(username="admin", password="secret")
     app.create_contact(Contact(firstname="", midlename="", lastname="",
                                 mobile=""))
     app.logout()

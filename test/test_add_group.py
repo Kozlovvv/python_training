@@ -1,6 +1,6 @@
 import pytest
 from python_training.model.group import Group
-from python_training.fixture.application_group import Application
+from python_training.fixture.application import Application
 
 
 @pytest.fixture
@@ -12,6 +12,7 @@ def app(request):
 
 def test_add_group(app):
     app.login(username="admin", password="secret")
+    app.create_group(Group(name="hgfgfd", header="jhgfre", footer="xcvb"))
     app.logout()
 
 
