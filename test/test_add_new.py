@@ -1,5 +1,5 @@
-from applicationnew import Application
-from contact import Contact
+from python_training.fixture.applicationnew import Application
+from python_training.model.contact import Contact
 import pytest
 
 
