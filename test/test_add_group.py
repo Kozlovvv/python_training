@@ -1,6 +1,6 @@
 import pytest
 from python_training.model.group import Group
-from python_training.fixture.applicationgroup import Application
+from python_training.fixture.application_group import Application
 
 
 @pytest.fixture
