@@ -34,3 +34,18 @@ class ContactHelper:
         wd.switch_to.alert.accept()
         # get home page
         wd.find_element_by_link_text("home").click()
+
+    def edit_first_contact(self, contact):
+        wd = self.app.wd
+        wd.find_element_by_xpath("//img[@alt='Edit']").click()
+        # fill group form
+        wd.find_element_by_name("firstname").clear()
+        wd.find_element_by_name("firstname").send_keys(contact.firstname)
+        wd.find_element_by_name("middlename").clear()
+        wd.find_element_by_name("middlename").send_keys(contact.midlename)
+        wd.find_element_by_name("lastname").clear()
+        wd.find_element_by_name("lastname").send_keys(contact.lastname)
+        wd.find_element_by_name("mobile").clear()
+        wd.find_element_by_name("mobile").send_keys(contact.mobile)
+        # submit update
+        wd.find_element_by_name("update").click()
