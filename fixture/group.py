@@ -5,13 +5,13 @@ class GroupHelper:
     def __init__(self, app):
         self.app = app
 
-    def return_to_groups_page(self):
+    def return_to_g_page(self):
         wd = self.app.wd
         wd.find_element_by_link_text("group page").click()
 
-    def create_group(self, group):
+    def create_g(self, group):
         wd = self.app.wd
-        self.open_groups_page()
+        self.open_g_page()
         # init group creation
         wd.find_element_by_name("new").click()
         # fill group form
@@ -27,8 +27,8 @@ class GroupHelper:
         # submit group creation
         wd.find_element_by_name("submit").click()
         # return gruop page
-        self.return_to_groups_page()
+        self.return_to_g_page()
 
-    def open_groups_page(self):
+    def open_g_page(self):
         wd = self.app.wd
         wd.find_element_by_link_text("groups").click()
